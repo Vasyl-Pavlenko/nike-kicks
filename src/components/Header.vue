@@ -1,5 +1,5 @@
 <script setup>
-import AppLink from './AppLink.vue';
+import AppLink from './AppLink.vue'
 
 defineProps({
   totalPrice: Number
@@ -9,57 +9,46 @@ const emit = defineEmits(['openDrawer'])
 </script>
 
 <template>
-  <header class="flex justify-between border-b border-slate-200 px-10 py-8">
+  <header class="flex flex-col lg:flex-row justify-between border-b border-slate-200 px-10 py-8">
     <router-link to="/">
-      <div class="flex items-center gap-4">
-        <img 
-          src="/logo.png" 
-          alt="Logo" 
-          class="w-10" 
-        />
+      <div class="flex items-center mb-3 lg:mb-0 gap-4">
+        <img src="/logo.png" alt="Logo" class="w-10" />
 
         <div>
-          <h2 class="text-xl font-bold uppercase">
-            Nike Kicks 🚀
-          </h2>
+          <h2 class="text-xl font-bold uppercase">Nike Kicks 🚀</h2>
 
-          <p class="text-slate-400">
-            Explore the Latest and Greatest Nike Sneakers
-          </p>
+          <p class="text-slate-400">Explore the Latest and Greatest Nike Sneakers</p>
         </div>
       </div>
     </router-link>
 
-    <ul class="flex items-center gap-10">
+    <ul class="flex flex-col lg:flex-row items-center gap-3 lg:gap-6">
       <li
         @click="() => emit('openDrawer')"
         class="flex items-center cursor-pointer gap-3 text-gray-500 hover:text-black"
       >
-        <img 
-          src="/cart.svg" 
-          alt="Cart"
-        />
-        
+        <img src="/cart.svg" alt="Cart" />
+
         <b>{{ totalPrice }} $</b>
       </li>
+      
+      <router-link to="/">
+        <li class="flex items-center cursor-pointer gap-3 text-gray-500 hover:text-black">
+          <span>🏡 Home</span>
+        </li>
+      </router-link>
 
       <router-link to="/favorites">
         <li class="flex items-center cursor-pointer gap-3 text-gray-500 hover:text-black">
-          <img 
-            src="/heart.svg" 
-            alt="Cart" 
-          />
-          
+          <img src="/heart.svg" alt="Cart" />
+
           <span>My Favorites ❤️</span>
         </li>
       </router-link>
 
       <AppLink to="https://v1-vasyl-pavlenko.vercel.app/">
         <li class="flex items-center cursor-pointer gap-3 text-gray-500 hover:text-black">
-          <img 
-            src="/profile.svg" 
-            alt="Dev"
-          />
+          <img src="/profile.svg" alt="Dev" />
 
           <span>Visit Dev Page</span>
         </li>

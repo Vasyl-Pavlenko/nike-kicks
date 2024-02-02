@@ -72,7 +72,7 @@ const fetchFavorites = async () => {
 }
 const fetchItems = async () => {
   try {
-    isLoading.value = true;
+    isLoading.value = true
 
     const params = {
       sortBy: filters.sortBy
@@ -95,7 +95,7 @@ const fetchItems = async () => {
   } catch (err) {
     console.log(err)
   } finally {
-    isLoading.value = false;
+    isLoading.value = false
   }
 }
 
@@ -123,17 +123,12 @@ watch(filters, fetchItems)
 </script>
 
 <template>
-  <div class="flex justify-between items-center">
-    <h2 class="text-3xl font-bold mb-8">
-      All Sneakers 👟
-    </h2>   
+  <div class="flex flex-col lg:flex-row justify-between items-center">
+    <h2 class="text-3xl font-bold mb-8">All Sneakers 👟</h2>
 
-    <div class="flex gap-4">
+    <div class="flex flex-col lg:flex-row gap-4">
       <div class="relative">
-        <img 
-          class="absolute left-4 top-3" 
-          src="/search.svg"
-        />
+        <img class="absolute left-4 top-3" src="/search.svg" />
         <input
           @input="onChangeSearchInput"
           class="border rounded-md py-2 pl-11 pr-4 outline-none focus:border-gray-400"
@@ -142,38 +137,24 @@ watch(filters, fetchItems)
         />
       </div>
 
-      <select 
-        @change="onChangeSelect" 
+      <select
+        @change="onChangeSelect"
         class="py-2 px-1 border rounded-md outline-none focus:border-gray-400"
       >
-        <option value="name">
-          Name
-        </option>
+        <option value="name">Name</option>
 
-        <option value="price">
-          Price (Low to High)
-        </option>
+        <option value="price">Price (Low to High)</option>
 
-        <option value="-price">
-          Price (High to Low)
-        </option>
+        <option value="-price">Price (High to Low)</option>
       </select>
     </div>
   </div>
 
   <div class="mt-10">
-    <CardList 
-      :items="items" 
-      @add-to-favorite="addToFavorite" 
-      @add-to-cart="onClickAddPlus"
-    />
+    <CardList :items="items" @add-to-favorite="addToFavorite" @add-to-cart="onClickAddPlus" />
   </div>
 
   <div class="mt-10">
-    <InfoBlock
-      v-if="isLoading"
-      title="Loading All Sneakers..."
-      image-url="/loader.png"
-    />
+    <InfoBlock v-if="isLoading" title="Loading All Sneakers..." image-url="/loader.png" />
   </div>
 </template>

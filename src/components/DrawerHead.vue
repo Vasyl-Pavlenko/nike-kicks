@@ -30,6 +30,7 @@ const { closeDrawer } = inject('cart')
         stroke-linejoin="round"
       />
     </svg>
+    
     <h2 class="text-2xl font-bold">Your Cart</h2>
   </div>
 </template>
